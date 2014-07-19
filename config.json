@@ -12,5 +12,6 @@
     "title": "Minimalistic bootstrap project docs",
     "url": "http://localhost:8080/"
   },
-  "baseUrl": "/"
+  "baseUrl": "/",
+  "ignore": [".DS_store"]
 }
