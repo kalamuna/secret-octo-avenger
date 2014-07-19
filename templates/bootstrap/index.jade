@@ -1,0 +1,911 @@
+extends ../page
+
+block content
+  .container.bs-docs-container
+    .row
+      .col-md-9(role='main')
+        .bs-docs-section
+          h1#download.page-header Download
+          p.lead
+            | Bootstrap (currently v3.2.0) has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.
+          .row.bs-downloads
+            .col-sm-4
+              h3#download-bootstrap Bootstrap
+              p
+                | Compiled and minified CSS, JavaScript, and fonts. No docs or original source files are included.
+              p
+                a.btn.btn-lg.btn-outline(href='https://github.com/twbs/bootstrap/releases/download/v3.2.0/bootstrap-3.2.0-dist.zip', role='button', onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');") Download Bootstrap
+            .col-sm-4
+              h3#download-source Source code
+              p
+                | Source Less, JavaScript, and font files, along with our docs.
+                strong
+                  | Requires a Less compiler and
+                  a(href='#grunt') some setup.
+              p
+                a.btn.btn-lg.btn-outline(href='https://github.com/twbs/bootstrap/archive/v3.2.0.zip', role='button', onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');") Download source
+            .col-sm-4
+              h3#download-sass Sass
+              p
+                a(href='https://github.com/twbs/bootstrap-sass') Bootstrap ported from Less to Sass
+                |  for easy inclusion in Rails, Compass, or Sass-only projects.
+              p
+                a.btn.btn-lg.btn-outline(href='https://github.com/twbs/bootstrap-sass/archive/v3.2.0.tar.gz', role='button', onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Sass');") Download Sass
+          h3#download-cdn Bootstrap CDN
+          p
+            | The folks over at
+            a(href='http://www.maxcdn.com/') MaxCDN
+            |  graciously provide CDN support for Bootstrap&apos;s CSS and JavaScript. Just use these
+            a(href='http://www.bootstrapcdn.com/') Bootstrap CDN
+            |  links.
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          h3#download-bower Install with Bower
+          p
+            | Install and manage Bootstrap&apos;s Less, CSS, JavaScript, and fonts using
+            a(href='http://bower.io') Bower
+            | .
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+        .bs-docs-section
+          h1#whats-included.page-header What&apos;s included
+          p.lead
+            | Bootstrap is downloadable in two forms, within which you&apos;ll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.
+          #jquery-required.bs-callout.bs-callout-warning
+            h4 jQuery required
+            p
+              | Please note that
+              strong all JavaScript plugins require jQuery
+              |  to be included, as shown in the
+              a(href='#template') starter template
+              | .
+              a(href='https://github.com/twbs/bootstrap/blob/v3.2.0/bower.json')
+                | Consult our
+                code bower.json
+              |  to see which versions of jQuery are supported.
+          h2#whats-included-precompiled Precompiled Bootstrap
+          p
+            | Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You&apos;ll see something like this:
+          //
+            NOTE: This info is intentionally duplicated in the README.
+            Copy any changes made here over to the README too.
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          p
+            | This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (
+            code bootstrap.*
+            | ), as well as compiled and minified CSS and JS (
+            code bootstrap.min.*
+            | ). Fonts from Glyphicons are included, as is the optional Bootstrap theme.
+          h2#whats-included-source Bootstrap source code
+          p
+            | The Bootstrap source code download includes the precompiled CSS, JavaScript, and font assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more:
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          p
+            | The
+            code less/
+            | ,
+            code js/
+            | , and
+            code fonts/
+            |  are the source code for our CSS, JS, and icon fonts (respectively). The
+            code dist/
+            |  folder includes everything listed in the precompiled download section above. The
+            code docs/
+            |  folder includes the source code for our documentation, and
+            code examples/
+            |  of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
+        .bs-docs-section
+          h1#grunt.page-header Compiling CSS and JavaScript
+          p.lead
+            | Bootstrap uses
+            a(href='http://gruntjs.com') Grunt
+            |  for its build system, with convenient methods for working with the framework. It&apos;s how we compile our code, run tests, and more.
+          h2#grunt-installing Installing Grunt
+          p
+            | To install Grunt, you must
+            strong
+              | first
+              a(href='http://nodejs.org/download/') download and install node.js
+            |  (which includes npm). npm stands for
+            a(href='http://npmjs.org/') node packaged modules
+            |  and is a way to manage development dependencies through node.js.
+          |   Then, from the command line:
+          ol
+            li
+              | Install
+              code grunt-cli
+              |  globally with
+              code npm install -g grunt-cli
+              | .
+            li
+              | Navigate to the root
+              code /bootstrap/
+              |  directory, then run
+              code npm install
+              | . npm will look at the
+              a(href='https://github.com/twbs/bootstrap/blob/master/package.json')
+                code package.json
+              |  file and automatically install the necessary local dependencies listed there.
+          p
+            | When completed, you&apos;ll be able to run the various Grunt commands provided from the command line.
+          h2#grunt-commands Available Grunt commands
+          h3
+            code grunt dist
+            |  (Just compile CSS and JavaScript)
+          p
+            | Regenerates the
+            code /dist/
+            |  directory with compiled and minified CSS and JavaScript files. As a Bootstrap user, this is normally the command you want.
+          h3
+            code grunt watch
+            |  (Watch)
+          p
+            | Watches the Less source files and automatically recompiles them to CSS whenever you save a change.
+          h3
+            code grunt test
+            |  (Run tests)
+          p
+            | Runs
+            a(href='http://jshint.com') JSHint
+            |  and runs the
+            a(href='http://qunitjs.com') QUnit
+            |  tests headlessly in
+            a(href='http://phantomjs.org') PhantomJS
+            | .
+          h3
+            code grunt
+            |  (Build absolutely everything and run tests)
+          p
+            | Compiles and minifies CSS and JavaScript, builds the documentation website, runs the HTML5 validator against the docs, regenerates the Customizer assets, and more. Usually only necessary if you&apos;re hacking on Bootstrap itself.
+          h2#grunt-troubleshooting Troubleshooting
+          p
+            | Should you encounter problems with installing dependencies or running Grunt commands, first delete the
+            code /node_modules/
+            |  directory generated by npm. Then, rerun
+            code npm install
+            | .
+        .bs-docs-section
+          h1#template.page-header Basic template
+          p.lead
+            | Start with this basic HTML template, or modify
+            a(href='#examples') these examples
+            | . We hope you&apos;ll customize our templates and examples, adapting them to suit your needs.
+          p Copy the HTML below to begin working with a minimal Bootstrap document.
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+        .bs-docs-section
+          h1#examples.page-header Examples
+          p.lead
+            | Build on the basic template above with Bootstrap&apos;s many components. We encourage you to customize and adapt Bootstrap to suit your individual project&apos;s needs.
+          h3#examples-framework Using the framework
+          .row.bs-examples
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/starter-template/')
+                img(src='../examples/screenshots/starter-template.jpg', alt='')
+              h4 Starter template
+              p Nothing but the basics: compiled CSS and JavaScript along with a container.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/theme/')
+                img(src='../examples/screenshots/theme.jpg', alt='')
+              h4 Bootstrap theme
+              p Load the optional Bootstrap theme for a visually enhanced experience.
+            .clearfix.visible-xs
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/grid/')
+                img(src='../examples/screenshots/grid.jpg', alt='')
+              h4 Grids
+              p Multiple examples of grid layouts with all four tiers, nesting, and more.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/jumbotron/')
+                img(src='../examples/screenshots/jumbotron.jpg', alt='')
+              h4 Jumbotron
+              p Build around the jumbotron with a navbar and some basic grid columns.
+            .clearfix.visible-xs
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/jumbotron-narrow/')
+                img(src='../examples/screenshots/jumbotron-narrow.jpg', alt='')
+              h4 Narrow jumbotron
+              p Build a more custom page by narrowing the default container and jumbotron.
+          h3#examples-navbars Navbars in action
+          .row.bs-examples
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/navbar/')
+                img(src='../examples/screenshots/navbar.jpg', alt='')
+              h4 Navbar
+              p
+                | Super basic template that includes the navbar along with some additional content.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/navbar-static-top/')
+                img(src='../examples/screenshots/navbar-static.jpg', alt='')
+              h4 Static top navbar
+              p
+                | Super basic template with a static top navbar along with some additional content.
+            .clearfix.visible-xs
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/navbar-fixed-top/')
+                img(src='../examples/screenshots/navbar-fixed.jpg', alt='')
+              h4 Fixed navbar
+              p Super basic template with a fixed top navbar along with some additional content.
+          h3#examples-custom Custom components
+          .row.bs-examples
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/cover/')
+                img(src='../examples/screenshots/cover.jpg', alt='')
+              h4 Cover
+              p A one-page template for building simple and beautiful home pages.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/carousel/')
+                img(src='../examples/screenshots/carousel.jpg', alt='')
+              h4 Carousel
+              p Customize the navbar and carousel, then add some new components.
+            .clearfix.visible-xs
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/blog/')
+                img(src='../examples/screenshots/blog.jpg', alt='')
+              h4 Blog
+              p Simple two-column blog layout with custom navigation, header, and type.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/dashboard/')
+                img(src='../examples/screenshots/dashboard.jpg', alt='')
+              h4 Dashboard
+              p Basic structure for a admin dashboard with fixed sidebar and navbar.
+            .clearfix.visible-xs
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/signin/')
+                img(src='../examples/screenshots/sign-in.jpg', alt='')
+              h4 Sign-in page
+              p Custom form layout and design for a simple sign in form.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/justified-nav/')
+                img(src='../examples/screenshots/justified-nav.jpg', alt='')
+              h4 Justified nav
+              p
+                | Create a custom navbar with justified links. Heads up!
+                a(href='../components/#nav-justified') Not too Safari friendly.
+            .clearfix.visible-xs
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/sticky-footer/')
+                img(src='../examples/screenshots/sticky-footer.jpg', alt='')
+              h4 Sticky footer
+              p
+                | Attach a footer to the bottom of the viewport when the content is shorter than it.
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/sticky-footer-navbar/')
+                img(src='../examples/screenshots/sticky-footer-navbar.jpg', alt='')
+              h4 Sticky footer with navbar
+              p Attach a footer to the bottom of the viewport with a fixed navbar at the top.
+          h3#examples-experiments Experiments
+          .row.bs-examples
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/non-responsive/')
+                img(src='../examples/screenshots/non-responsive.jpg', alt='')
+              h4 Non-responsive Bootstrap
+              p
+                | Easily disable the responsiveness of Bootstrap
+                a(href='#disable-responsive') per our docs
+                | .
+            .col-xs-6.col-md-4
+              a.thumbnail(href='../examples/offcanvas/')
+                img(src='../examples/screenshots/offcanvas.jpg', alt='')
+              h4 Offcanvas
+              p Build a toggleable off-canvas navigation menu for use with Bootstrap.
+        .bs-docs-section
+          h1#community.page-header Community
+          p.lead
+            | Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.
+          ul
+            li
+              | Read and subscribe to
+              a(href='http://blog.getbootstrap.com/') The Official Bootstrap Blog
+              | .
+            li
+              | Chat with fellow Bootstrappers using IRC in the
+              code irc.freenode.net
+              |  server, in the
+              a(href='irc://irc.freenode.net/#twitter-bootstrap') ##twitter-bootstrap channel
+              | .
+            li
+              | For help using Bootstrap, ask on
+              a(href='http://stackoverflow.com/questions/tagged/twitter-bootstrap-3')
+                | StackOverflow using the tag
+                code twitter-bootstrap-3
+              | .
+            li
+              | Find inspiring examples of people building with Bootstrap at the
+              a(href='http://expo.getbootstrap.com') Bootstrap Expo
+              | .
+          p
+            | You can also follow
+            a(href='https://twitter.com/twbootstrap') @twbootstrap on Twitter
+            |  for the latest gossip and awesome music videos.
+        .bs-docs-section
+          h1#disable-responsive.page-header Disabling responsiveness
+          p.lead
+            | Bootstrap automatically adapts your pages for various screen sizes.
+            | Here&apos;s how to disable this feature so your page works like in
+            a(href='../examples/non-responsive/') this non-responsive example
+            | .
+          h3 Steps to disable page responsiveness
+          ol
+            li
+              | Omit the viewport
+              code &lt;meta&gt;
+              |  mentioned in
+              a(href='../css/#overview-mobile') the CSS docs
+            li
+              | Override the
+              code width
+              |  on the
+              code .container
+              |  for each grid tier with a single width, for example
+              code width: 970px !important;
+              |  Be sure that this comes after the default Bootstrap CSS. You can optionally avoid the
+              code !important
+              |  with media queries or some selector-fu.
+            li If using navbars, remove all navbar collapsing and expanding behavior.
+            li
+              | For grid layouts, use
+              code .col-xs-*
+              |  classes in addition to, or in place of, the medium/large ones. Don&apos;t worry, the extra-small device grid scales to all resolutions.
+          p
+            | You&apos;ll still need Respond.js for IE8 (since our media queries are still there and need to be processed).
+            | This disables the &quot;mobile site&quot; aspects of Bootstrap.
+          h3 Bootstrap template with responsiveness disabled
+          p
+            | We&apos;ve applied these steps to an example. Read its source code to see the specific changes implemented.
+          p
+            a.btn.btn-primary(href='../examples/non-responsive/') View non-responsive example
+        // Cross link to new migration page
+        #migration.bs-callout.bs-callout-info
+          h4 Migrating from v2.x to v3.x
+          p
+            | Looking to migrate from an older version of Bootstrap to v3.x? Check out
+            a(href='../migration') our migration guide
+            | .
+        .bs-docs-section
+          h1#support.page-header Browser and device support
+          p.lead
+            | Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.
+          h3#support-browsers Supported browsers
+          p
+            | Specifically, we support the
+            strong latest versions
+            |  of the following browsers and platforms. On Windows,
+            strong we support Internet Explorer 8-11
+            | . More specific support information is provided below.
+          .table-responsive
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  td
+                  th Chrome
+                  th Firefox
+                  th Internet Explorer
+                  th Opera
+                  th Safari
+              tbody
+                tr
+                  th Android
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-muted(rowspan='3', style='vertical-align: middle;') N/A
+                  td.text-danger
+                    span.glyphicon.glyphicon-remove
+                    span.sr-only Not Supported
+                  td.text-muted N/A
+                tr
+                  th iOS
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-muted N/A
+                  td.text-danger
+                    span.glyphicon.glyphicon-remove
+                    span.sr-only Not Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                tr
+                  th Mac OS X
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                tr
+                  th Windows
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    span.sr-only Supported
+                  td.text-danger
+                    span.glyphicon.glyphicon-remove
+                    span.sr-only Not Supported
+          p
+            | Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.
+          p
+            | For a list of some of the browser bugs that Bootstrap has to grapple with, see our
+            a(href='../browser-bugs/') Wall of browser bugs
+            | .
+          h3#support-ie8-ie9 Internet Explorer 8 and 9
+          p
+            | Internet Explorer 8 and 9 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported by these browsers. In addition,
+            strong
+              | Internet Explorer 8 requires the use of
+              a(href='https://github.com/scottjehl/Respond') Respond.js
+              |  to enable media query support.
+          .table-responsive
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  th.col-xs-4(scope='col') Feature
+                  th.col-xs-4(scope='col') Internet Explorer 8
+                  th.col-xs-4(scope='col') Internet Explorer 9
+              tbody
+                tr
+                  th(scope='row')
+                    code border-radius
+                  td.text-danger
+                    span.glyphicon.glyphicon-remove
+                    |  Not supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    |  Supported
+                tr
+                  th(scope='row')
+                    code box-shadow
+                  td.text-danger
+                    span.glyphicon.glyphicon-remove
+                    |  Not supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    |  Supported
+                tr
+                  th(scope='row')
+                    code transform
+                  td.text-danger
+                    span.glyphicon.glyphicon-remove
+                    |  Not supported
+                  td.text-success
+                    span.glyphicon.glyphicon-ok
+                    |  Supported, with
+                    code -ms
+                    |  prefix
+                tr
+                  th(scope='row')
+                    code transition
+                  td.text-danger(colspan='2')
+                    span.glyphicon.glyphicon-remove
+                    |  Not supported
+                tr
+                  th(scope='row')
+                    code placeholder
+                  td.text-danger(colspan='2')
+                    span.glyphicon.glyphicon-remove
+                    |  Not supported
+          p
+            | Visit
+            a(href='http://caniuse.com/') Can I use...
+            |  for details on browser support of CSS3 and HTML5 features.
+          h3#support-ie8-respondjs Internet Explorer 8 and Respond.js
+          p
+            | Beware of the following caveats when using Respond.js in your development and production environments for Internet Explorer 8.
+          h4#respond-js-x-domain Respond.js and cross-domain CSS
+          p
+            | Using Respond.js with CSS hosted on a different (sub)domain (for example, on a CDN) requires some additional setup.
+            a(href='https://github.com/scottjehl/Respond/blob/master/README.md#cdnx-domain-setup') See the Respond.js docs
+            |  for details.
+          h4#respond-file-proto
+            | Respond.js and
+            code file://
+          p
+            | Due to browser security rules, Respond.js doesn&apos;t work with pages viewed via the
+            code file://
+            |  protocol (like when opening a local HTML file). To test responsive features in IE8, view your pages over HTTP(S).
+            a(href='https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats') See the Respond.js docs
+            |  for details.
+          h4#respond-import
+            | Respond.js and
+            code @import
+          p
+            | Respond.js doesn&apos;t work with CSS that&apos;s referenced via
+            code @import
+            | . In particular, some Drupal configurations are known to use
+            code @import
+            | .
+            a(href='https://github.com/scottjehl/Respond/blob/master/README.md#support--caveats') See the Respond.js docs
+            |  for details.
+          h3#support-ie8-box-sizing Internet Explorer 8 and box-sizing
+          p
+            | IE8 does not fully support
+            code box-sizing: border-box;
+            |  when combined with
+            code min-width
+            | ,
+            code max-width
+            | ,
+            code min-height
+            | , or
+            code max-height
+            | . For that reason, as of v3.0.1, we no longer use
+            code max-width
+            |  on
+            code .container
+            | s.
+          h3#support-ie8-font-face Internet Explorer 8 and @font-face
+          p
+            | IE8 has some issues with
+            code @font-face
+            |  when combined with
+            code :before
+            | . Bootstrap uses that combination with its Glyphicons. If a page is cached, and loaded without the mouse over the window (i.e. hit the refresh button or load something in an iframe) then the page gets rendered before the font loads. Hovering over the page (body) will show some of the icons and hovering over the remaining icons will show those as well.
+            a(href='https://github.com/twbs/bootstrap/issues/13863') See issue #13863
+            |  for details.
+          h3#support-ie-compatibility-modes IE Compatibility modes
+          p
+            | Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you&apos;re using the latest rendering mode for IE, consider including the appropriate
+            code &lt;meta&gt;
+            |  tag in your pages:
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          p
+            | Confirm the document mode by opening the debugging tools: press
+            kbd F12
+            |  and check the &quot;Document Mode&quot;.
+          p
+            | This tag is included in all of Bootstrap&apos;s documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
+          p
+            | See
+            a(href='http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge') this StackOverflow question
+            |  for more information.
+          h3#support-ie10-width Internet Explorer 10 in Windows 8 and Windows Phone 8
+          p
+            | Internet Explorer 10 doesn&apos;t differentiate
+            strong device width
+            |  from
+            strong viewport width
+            | , and thus doesn&apos;t properly apply the media queries in Bootstrap&apos;s CSS. Normally you&apos;d just add a quick snippet of CSS to fix this:
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          p
+            | However, this doesn&apos;t work for devices running Windows Phone 8 versions older than
+            a(href='http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx') Update 3 (a.k.a. GDR3)
+            | , as it causes such devices to show a mostly desktop view instead of narrow &quot;phone&quot; view. To address this, you&apos;ll need to
+            strong include the following CSS and JavaScript to work around the bug
+            | .
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          p
+            | For more information and usage guidelines, read
+            a(href='http://timkadlec.com/2013/01/windows-phone-8-and-device-width/') Windows Phone 8 and Device-Width
+            | .
+          p
+            | As a heads up, we include this in all of Bootstrap&apos;s documentation and examples as a demonstration.
+          h3#support-safari-percentages Safari percent rounding
+          p
+            | As of Safari v7.0.1 for OS X and Safari for iOS v7.0.1, Safari&apos;s rendering engine has some trouble with the number of decimal places used in our
+            code .col-*-1
+            |  grid classes. So if you have 12 individual grid columns, you&apos;ll notice that they come up short compared to other rows of columns. We can&apos;t do much here (
+            a(href='https://github.com/twbs/bootstrap/issues/9282') see #9282
+            | ) but you do have some options:
+          ul
+            li
+              | Add
+              code .pull-right
+              |  to your last grid column to get the hard-right alignment
+            li
+              | Tweak your percentages manually to get the perfect rounding for Safari (more difficult than the first option)
+          p
+            | We&apos;ll keep an eye on this though and update our code if we have an easy solution.
+          h3#support-fixed-position-keyboards Modals, navbars, and virtual keyboards
+          h4 Overflow and scrolling
+          p
+            | Support for
+            code overflow: hidden
+            |  on the
+            code &lt;body&gt;
+            |  element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices&apos; browsers, the
+            code &lt;body&gt;
+            |  content will begin to scroll.
+          h4 Virtual keyboards
+          p
+            | Also, note that if you&apos;re using inputs in your modal or navbar, iOS has a rendering bug that doesn&apos;t update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to
+            code position: absolute
+            |  or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.
+          h4 Navbar Dropdowns
+          p
+            | The
+            code .dropdown-backdrop
+            |  element isn&apos;t used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or any other element which will fire a click event in iOS).
+          h3#support-browser-zooming Browser zooming
+          p
+            | Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
+          h3#support-printing Printer viewports
+          p
+            | Even in some modern browsers, printing can be quirky. In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap&apos;s extra-small grid being unexpectedly activated when printing.
+            a(href='https://github.com/twbs/bootstrap/issues/12078') See #12078 for some details.
+            |  Suggested workarounds:
+          ul
+            li Embrace the extra-small grid and make sure your page looks acceptable under it.
+            li
+              | Customize the values of the
+              code @screen-*
+              |  Less variables so that your printer paper is considered larger than extra-small.
+            li
+              | Add custom media queries to change the grid size breakpoints for print media only.
+          h3#support-android-stock-browser Android stock browser
+          p
+            | Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.
+          h4 Select menus
+          p
+            | On
+            code &lt;select&gt;
+            |  elements, the Android stock browser will not display the side controls if there is a
+            code border-radius
+            |  and/or
+            code border
+            |  applied. (See
+            a(href='http://stackoverflow.com/questions/14744437/html-select-box-not-showing-drop-down-arrow-on-android-version-4-0-when-set-with') this StackOverflow question
+            |  for details.) Use the snippet of code below to remove the offending CSS and render the
+            code &lt;select&gt;
+            |  as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          p
+            | Want to see an example?
+            a(href='http://jsbin.com/OyaqoDO/2') Check out this JS Bin demo.
+        .bs-docs-section
+          h1#third-parties.page-header Third party support
+          p.lead
+            | While we don&apos;t officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.
+          h3#third-box-sizing Box-sizing
+          p
+            | Some third party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to
+            code * { box-sizing: border-box; }
+            | , a rule which makes it so
+            code padding
+            |  does not affect the final computed width of an element. Learn more about
+            a(href='http://css-tricks.com/box-sizing/') box model and sizing at CSS Tricks
+            | .
+          p
+            | Depending on the context, you may override as-needed (Option 1) or reset the box-sizing for entire regions (Option 2).
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+        .bs-docs-section
+          h1#accessibility.page-header Accessibility
+          p.lead
+            | Bootstrap follows common web standards and&mdash;with minimal extra effort&mdash;can be used to create sites that are accessible to those using
+            abbr.initialism(title='Assistive Technology') AT
+            | .
+          h3 Skip navigation
+          p
+            | If your navigation contains many links and comes before the main content in the DOM, add a
+            code Skip to main content
+            |  link immediately after your opening
+            code &lt;body&gt;
+            |  tag.
+            a(href='http://a11yproject.com/posts/skip-nav-links/') (read why)
+          .zero-clipboard
+            span.btn-clipboard Copy
+          .highlight
+            pre.
+
+          h3 Nested headings
+          p
+            | When nesting headings (
+            code &lt;h1&gt;
+            |  -
+            code &lt;h6&gt;
+            | ), your primary document header should be an
+            code &lt;h1&gt;
+            | . Subsequent headings should make logical use of
+            code &lt;h2&gt;
+            |  -
+            code &lt;h6&gt;
+            |  such that screen readers can construct a table of contents for your pages.
+          p
+            | Learn more at
+            a(href='http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/') HTML CodeSniffer
+            |  and
+            a(href='http://accessibility.psu.edu/headings') Penn State&apos;s AccessAbility
+            | .
+          h3 Additional resources
+          ul
+            li
+              a(href='https://github.com/squizlabs/HTML_CodeSniffer') &quot;HTML Codesniffer&quot; bookmarklet for identifying accessibility issues
+            li
+              a(href='http://a11yproject.com/') The A11Y Project
+            li
+              a(href='https://developer.mozilla.org/en-US/docs/Accessibility') MDN accessibility documentation
+        .bs-docs-section
+          h1#license-faqs.page-header License FAQs
+          p.lead
+            | Bootstrap is released under the MIT license and is copyright 2014 Twitter. Boiled down to smaller chunks, it can be described with the following conditions.
+          h4 It requires you to:
+          ul
+            li Include the license and copyright notice in your works
+          h4 It permits you to:
+          ul
+            li
+              | Freely download and use Bootstrap, in whole or in part, for personal, private, company internal, or commercial purposes
+            li Use Bootstrap in packages or distributions that you create
+            li Modify the source code
+            li
+              | Grant a sublicense to modify and distribute Bootstrap to third parties not included in the license
+          h4 It forbids you to:
+          ul
+            li
+              | Hold the authors and license owners liable for damages as Bootstrap is provided without warranty
+            li Hold the creators or copyright holders of Bootstrap liable
+            li Redistribute any piece of Bootstrap without proper attribution
+            li
+              | Use any marks owned by Twitter in any way that might state or imply that Twitter endorses your distribution
+            li
+              | Use any marks owned by Twitter in any way that might state or imply that you created the Twitter software in question
+          h4 It does not require you to:
+          ul
+            li
+              | Include the source of Bootstrap itself, or of any modifications you may have made to it, in any redistribution you may assemble that includes it
+            li
+              | Submit changes that you make to Bootstrap back to the Bootstrap project (though such feedback is encouraged)
+          p
+            | The full Bootstrap license is located
+            a(href='https://github.com/twbs/bootstrap/blob/master/LICENSE') in the project repository
+            |  for more information.
+        .bs-docs-section
+          h1#translations.page-header Translations
+          p.lead
+            | Community members have translated Bootstrap&apos;s documentation into various languages. None are officially supported and they may not always be up to date.
+          ul
+            li
+              a(href='http://v3.bootcss.com/', hreflang='zh') Bootstrap &#x4E2D;&#x6587;&#x6587;&#x6863; (Chinese)
+            li
+              a(href='http://www.oneskyapp.com/docs/bootstrap/fr', hreflang='fr') Bootstrap en Fran&ccedil;ais (French)
+            li
+              a(href='http://holdirbootstrap.de/', hreflang='de') Bootstrap auf Deutsch (German)
+            li
+              a(href='http://www.hackerstribe.com/guide/IT-bootstrap-3.1.1/', hreflang='it') Bootstrap in Italiano (Italian)
+            li
+              a(href='http://bootstrapk.com/BS3/', hreflang='ko') Bootstrap &#xD55C;&#xAD6D;&#xC5B4; (Korean)
+            li
+              a(href='http://www.oneskyapp.com/docs/bootstrap/ru', hreflang='ru') Bootstrap &pcy;&ocy;-&rcy;&ucy;&scy;&scy;&kcy;&icy; (Russian)
+            li
+              a(href='http://www.oneskyapp.com/docs/bootstrap/es', hreflang='es') Bootstrap en Espa&ntilde;ol (Spanish)
+            li
+              a(href='http://twbs.site-konstruktor.com.ua', hreflang='uk') Bootstrap ua &Ucy;&kcy;&rcy;&acy;&yicy;&ncy;&scy;&softcy;&kcy;&ocy;&yucy; (Ukrainian)
+          p
+            strong.text-danger We don&apos;t help organize or host translations, we just link to them.
+          p Finished a new or better translation? Open a pull request to add it to our list.
+      .col-md-3
+        .bs-docs-sidebar.hidden-print.hidden-xs.hidden-sm.affix(role='complementary')
+          ul.nav.bs-docs-sidenav
+            li
+              a(href='#download') Download
+            li
+              a(href='#whats-included') What&apos;s included
+              ul.nav
+                li
+                  a(href='#whats-included-precompiled') Precompiled
+                li
+                  a(href='#whats-included-source') Source code
+            li
+              a(href='#grunt') Compiling CSS and JavaScript
+              ul.nav
+                li
+                  a(href='#grunt-installing') Installing Grunt
+                li
+                  a(href='#grunt-commands') Available Grunt commands
+                li
+                  a(href='#grunt-troubleshooting') Troubleshooting
+            li
+              a(href='#template') Basic template
+            li
+              a(href='#examples') Examples
+              ul.nav
+                li
+                  a(href='#examples-framework') Using the framework
+                li
+                  a(href='#examples-navbars') Navbars in action
+                li
+                  a(href='#examples-custom') Custom components
+                li
+                  a(href='#examples-experiments') Experiments
+            li
+              a(href='#community') Community
+            li
+              a(href='#disable-responsive') Disabling responsiveness
+            li
+              a(href='#migration') Migrating from 2.x to 3.0
+            li
+              a(href='#support') Browser and device support
+              ul.nav
+                li
+                  a(href='#support-browsers') Supported browsers
+                li
+                  a(href='#support-ie8-ie9') Internet Explorer 8-9
+                li
+                  a(href='#support-ie8-respondjs') IE8 and Respond.js
+                li
+                  a(href='#support-ie8-box-sizing') IE8 and box-sizing
+                li
+                  a(href='#support-ie8-font-face') IE8 and @font-face
+                li
+                  a(href='#support-ie-compatibility-modes') IE Compatibility modes
+                li
+                  a(href='#support-ie10-width') IE10 and Windows (Phone) 8
+                li
+                  a(href='#support-safari-percentages') Safari percent rounding
+                li
+                  a(href='#support-fixed-position-keyboards') Modals, navbars, and virtual keyboards
+                li
+                  a(href='#support-browser-zooming') Browser zooming
+                li
+                  a(href='#support-printing') Printer viewports
+                li
+                  a(href='#support-android-stock-browser') Android stock browser
+            li
+              a(href='#third-parties') Third party support
+            li
+              a(href='#accessibility') Accessibility
+            li
+              a(href='#license-faqs') License FAQs
+            li.active
+              a(href='#translations') Translations
+          a.back-to-top(href='#top')
+            | Back to top

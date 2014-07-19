@@ -1,0 +1,11 @@
+extends layout
+
+block header
+  if page && page.title
+    h1.page-header= page.title
+  else
+    h1.page-header Page title
+
+block content
+  if page.html
+    != typogr(page.html).typogrify()

@@ -1,8 +1,19 @@
-extends layout
+extends page
 
 block header
-  h1.page-header= page.title
+  h1.page-header= locals.title
 
 block content
+  if articles
+    each article in articles
+      artcile
+        header
+          h2
+            a(href=article.url)= article.title
+        p.lead
+          if article.hasMore
+          p.more
+            a(href=article.url) more
 
-  = page.html
+  if page && page.html
+    != typogr(page.html).typogrify()

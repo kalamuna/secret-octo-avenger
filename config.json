@@ -1,7 +1,15 @@
-{ "plugins": ["wintersmith-html"],
-  "require": ["wintersmith-html"],
+{
+  "plugins": ["./plugins/paginator.coffee"],
+  "require": {
+    "moment": "moment",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "jade": {
+    "pretty": true
+  },
   "locals": {
-    "title": "Bare minimum wintersmith site",
+    "title": "Minimalistic bootstrap project docs",
     "url": "http://localhost:8080/"
   },
   "baseUrl": "/"

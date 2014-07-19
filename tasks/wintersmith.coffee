@@ -23,7 +23,7 @@ module.exports = (gulp) ->
 
   gulp.task('build', ->
     prod = wintersmith(ghPages)
-    prod.get(getPluginInfo())
+    
     prod.build()
   )
 
