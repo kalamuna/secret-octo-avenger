@@ -1,5 +1,8 @@
-{
+{ "plugins": ["wintersmith-html"],
+  "require": ["wintersmith-html"],
   "locals": {
-    "title": "Bare minimum wintersmith site"
-  }
+    "title": "Bare minimum wintersmith site",
+    "url": "http://localhost:8080/"
+  },
+  "baseUrl": "/"
 }
